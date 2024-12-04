@@ -27,8 +27,7 @@ const capturarLog = (req, metodo) => {
     };
 };
 
-
-// Endpoint alternativo para armazenar a mensagem via GET
+// Endpoint para armazenar a mensagem via GET
 app.get('/api/armazenar_mensagem', (req, res) => {
     const mensagem = req.query.mensagem; // Recupera o parâmetro "mensagem" da query string
     if (mensagem) {
@@ -45,7 +44,7 @@ app.get('/api/obter_mensagem', (req, res) => {
     res.json({ conteudo: mensagemArmazenada });
 });
 
-// Novo endpoint para retornar a mensagem e o log
+// Endpoint para retornar a mensagem e o log
 app.get('/api/log', (req, res) => {
     res.json({ conteudo: mensagemArmazenada, log: logMensagem });
 });
