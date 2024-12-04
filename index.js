@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-//coment test
+
 const app = express();
 const portHttp = 80;  // Porta para HTTP
 
@@ -31,7 +31,8 @@ const capturarLog = (req, metodo) => {
 app.get('/api/armazenar_mensagem', (req, res) => {
     const mensagem = req.query.mensagem; // Recupera o parâmetro "mensagem" da query string
     if (mensagem) {
-        mensagemArmazenada = mensagem;
+        // Assegura que a mensagem armazenada seja uma string
+        mensagemArmazenada = Array.isArray(mensagem) ? mensagem.join(",") : mensagem;
         logMensagem = capturarLog(req, 'GET');
         res.json({ status: "Mensagem armazenada com sucesso (via GET)" });
     } else {
